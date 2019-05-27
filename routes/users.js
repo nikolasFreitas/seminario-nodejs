@@ -1,13 +1,10 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const jsonToSend = require('../JSON/user.json');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  res.send(jsonToSend);
 });
-
-router.get('/manolo', function(req,res,next) {
-  res.send('Aqui é o manolo');
-})
 
 module.exports = router;
