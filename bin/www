@@ -4,9 +4,10 @@
  * Module dependencies.
  */
 
-var app = require('../app');
-var debug = require('debug')('seminario-nodejs:server');
-var http = require('http');
+const app = require('../app');
+const debug = require('debug')('seminario-nodejs:server');
+const http = require('http');
+const getIp = require('../helpers/getIp');
 
 /**
  * Get port from environment and store in Express.
@@ -19,13 +20,18 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-var server = http.createServer(app, () => console.log(`Listen at ${port}`));
+var server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
+server.listen(port, () => {
+  console.log(`Servidor criado na porta ${port}`);
+  console.log("Mandem mensagens ao vivo! \n");
+  
+  getIp(port);
+});
 server.on('error', onError);
 server.on('listening', onListening);
 
