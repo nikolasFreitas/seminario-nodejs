@@ -31,6 +31,8 @@ server.listen(port, () => {
   console.log("Mandem mensagens ao vivo! \n");
   
   getIp(port);
+  console.log("No corpo da mensagem deverá ter um JSON assim: \n {'message': 'minha mensagenzinha...'}");
+  
 });
 server.on('error', onError);
 server.on('listening', onListening);
